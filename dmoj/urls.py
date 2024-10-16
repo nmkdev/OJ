@@ -1,5 +1,7 @@
 import os
 
+from . import views
+
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
@@ -101,6 +103,7 @@ def paged_list_view(view, name):
 
 
 urlpatterns = [
+    path('about/', views.about_view, name='about'),
     path('', blog.PostList.as_view(template_name='home.html', title=_('Home')), kwargs={'page': 1}, name='home'),
     path('500/', exception),
     path('admin/', admin.site.urls),
